@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Local References</title>
+    <link href="content/kendo.common.min.css" rel="stylesheet" />
+    <link href="content/kendo.default.min.css" rel="stylesheet" />
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/kendo.web.min.js"></script>
+</head>
+<body>
+    <p>text</p>
+    <div id="grid"></div>
+
+    <script>
+
+        var tgt = "http://localhost/demosite/api/contact/";
+        var contactSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: tgt
+                }
+            }
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: contactSource
+        })
+ 
+        </script>
+ 
+</body>
+</html>
+        
