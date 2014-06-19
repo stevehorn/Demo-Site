@@ -9,10 +9,24 @@ namespace WebApi.Models
     [Table(Name = "Contacts")]
     public class Contact
     {
+        private int? _id;
         private string _fname;
         private string _lname;
         private string _company;
         private string _region;
+
+        [Column(Storage = "_id", IsPrimaryKey=true, IsDbGenerated=true)]
+        public int? Id
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this._id = value;
+            }
+        }
 
         [Column(Storage = "_region")]
         public string Region

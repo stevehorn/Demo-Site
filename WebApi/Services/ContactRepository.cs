@@ -26,7 +26,7 @@ namespace WebApi.Services
             return contacts;
         }
 
-        public bool SaveContact(Contact contact)
+        public int? SaveContact(Contact contact)
         {
             ContactDataContext db = new ContactDataContext(conn_str);
             db.Contacts.InsertOnSubmit(contact);
@@ -35,9 +35,9 @@ namespace WebApi.Services
             }
             catch (Exception e)
             {
-                return false;
+                
             }
-            return true;
+            return contact.Id;
         }
     }
 

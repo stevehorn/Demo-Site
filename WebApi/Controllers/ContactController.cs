@@ -25,5 +25,10 @@ namespace WebApi.Controllers
         {
             return repository.GetAllContacts();
         }
+
+        public int? SaveContact(Contact contact)
+        {
+            return repository.SaveContact(contact);
+        }
     }
 }
