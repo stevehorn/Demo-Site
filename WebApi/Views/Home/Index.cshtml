@@ -8,39 +8,38 @@
     </div>
 </header>
 <div id="body">
-    <ul id="contacts"></ul>
+    <form id="saveContactForm" method="post">
+        <h3>Create a new Contact</h3>
+        <p>
+            <label for="contact_region">Region: </label>
+            <input type="text" name="region" />
+        </p>
+        <p>
+            <label for="contact_company">Company: </label>
+            <input type="text" name="company" />
+        </p>
+        <p>
+            <label for="contact_lname">Last Name: </label>
+            <input type="text" name="lname" />
+        </p>
+        <p>
+            <label for="contact_fname">First Name: </label>
+            <input type="text" name="fname" />
+        </p>
+        <input type="button" id="saveContact" value="Save" />
+    </form>
 </div>
-<form id="saveContactForm" method="post">
-    <h3>Create a new Contact</h3>
-    <p>
-        <label for="contactId">Contact Id:</label>
-        <input type="text" name="Id" />
-    </p>
-    <p>
-        <label for="contactName">Contact Name:</label>
-        <input type="text" name="Name" />
-    </p>
-    <input type="button" id="saveContact" value="Save" />
-</form>
-
 @section scripts{
-    <script type="text/javascript">
-        $(function () {
-            $.getJSON('/demosite/api/contact', function (contactsJsonPayload) {
-                $(contactsJsonPayload).each(function (i, item) {
-                    $('#contacts').append('<li>' + item.LName + '</li>');
-                });
-            });
-        });
+    <script>
 
         $('#saveContact').click(function () {
-            var nm = $('#contactName').val();
-            var id = $('#contactId').val();
-
             $.post("api/contact",
                   $("#saveContactForm").serialize(),
                   function (value) {
-                      $('#contacts').append('<li>' + value.Name + '</li>');
+                      $('#contacts').append('<li>' + value.Region + '</li>');
+                      $('#contacts').append('<li>' + value.Company + '</li>');
+                      $('#contacts').append('<li>' + value.LName + '</li>');
+                      $('#contacts').append('<li>' + value.FName + '</li>');
                   },
                   "json"
             );
