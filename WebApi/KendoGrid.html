@@ -29,8 +29,25 @@
                 {field: "Company", title: "Company", width: "20%"},
                 {field: "LName", title: "Last Name", width: "20%"},
                 {field: "FName", title: "First Name", width: "20%"}
-            ]
+            ],
+            dataBound: function (dataBoundEvent) {
+
+                var gridWidget = dataBoundEvent.sender;
+                var dataSource = gridWidget.dataSource;
+                $.each(gridWidget.items(), function (index, item) {
+                    var uid = $(item).data("uid");
+                    var dataItem = dataSource.getByUid(uid);
+                    $(item).attr("id", dataItem.Id + "-"+dataItem.LName);
+                });
+            },
+            groupable: {
+                messages: {
+                    empty: "Drag and drop columns here to group by"
+                }
+            }
         });
+
+        
  
         </script>
  
