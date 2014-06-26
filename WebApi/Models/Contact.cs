@@ -9,14 +9,14 @@ namespace WebApi.Models
     [Table(Name = "Contacts")]
     public class Contact
     {
-        private int? _id;
+        private int _id;
         private string _fname;
         private string _lname;
         private string _company;
         private string _region;
 
         [Column(Storage = "_id", IsPrimaryKey=true, IsDbGenerated=true)]
-        public int? Id
+        public int Id
         {
             get
             {

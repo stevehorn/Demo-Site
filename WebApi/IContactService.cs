@@ -17,7 +17,7 @@ namespace WebApi
         CompositeContact GetDataUsingDataContract(CompositeContact composite);
 
         [OperationContract]
-        int? SaveData(Contact contact);
+        int SaveData(Contact contact);
     }
 
 

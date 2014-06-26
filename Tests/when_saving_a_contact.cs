@@ -17,13 +17,13 @@ namespace Tests
         {
             ContactRepository repository = new ContactRepository();
             Contact test = new Contact();
-            test.Id = null;
+            test.Id = -1;
             test.Region = "zzzzz";
             test.Company = "1212121";
             test.LName = "zyzyzyz";
             test.FName = "jhsadfljhasfdlkjh";
 
-            Assert.IsTrue(repository.SaveContact(test) > 0);
+            Assert.IsTrue(repository.SaveContact(test)>0);
         }
     }
 }

@@ -18,6 +18,30 @@
             transport: {
                 read: {
                     url: target
+                },
+                update: {
+                    url: function (data) {
+                        return target + data.Id;
+                    },
+                    contentType: "application/json",
+                    type: "PUT"
+                },
+                parameterMap: function(data, operation) {
+                    if (operation !== "read") {
+                        return JSON.stringify(data);
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "Id",
+                        fields: {
+                            Id: { editable: false, type: 'number' },
+                            Region: {type: 'string'},
+                            Company: {type: 'string'},
+                            LName: {type: 'string'},
+                            FName: {type: 'string'}
+                        }
+                    }
                 }
             }
         });
@@ -28,10 +52,10 @@
                 {field: "Region", title: "Region", width: "15%"},
                 {field: "Company", title: "Company", width: "20%"},
                 {field: "LName", title: "Last Name", width: "20%"},
-                {field: "FName", title: "First Name", width: "20%"}
+                { field: "FName", title: "First Name", width: "20%" },
+                {command: 'edit'}
             ],
             dataBound: function (dataBoundEvent) {
-
                 var gridWidget = dataBoundEvent.sender;
                 var dataSource = gridWidget.dataSource;
                 $.each(gridWidget.items(), function (index, item) {
@@ -44,7 +68,11 @@
                 messages: {
                     empty: "Drag and drop columns here to group by"
                 }
-            }
+            },
+            editable: {
+                mode: 'popup'
+            },
+            toolbar: [{name: 'create', text: 'Create new contact'}]
         });
 
         

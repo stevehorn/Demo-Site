@@ -26,7 +26,7 @@ namespace WebApi
             return composite;
         }
 
-        public int? SaveData(Contact contact)
+        public int SaveData(Contact contact)
         {
             ContactRepository repository = new ContactRepository();
             return repository.SaveContact(contact);
