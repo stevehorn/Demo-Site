@@ -58,8 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="contact_helpers.cs" />
     <Compile Include="when_saving_a_contact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="when_updating_a_contact.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
