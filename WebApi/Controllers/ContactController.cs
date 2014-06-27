@@ -34,12 +34,12 @@ namespace WebApi.Controllers
             return repository.UpdateContact(contact);
         }
 
-        public HttpResponseMessage Post(int Id)
+        public HttpResponseMessage Post(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             Contact contact = new Contact();
-            contact.Id = Id;
+            contact.Id = id;
             contact.LName = string.IsNullOrEmpty(_request["LName"]) ? contact.LName : _request["LName"];
             contact.FName = string.IsNullOrEmpty(_request["FName"]) ? contact.LName : _request["FName"];
             contact.Company = string.IsNullOrEmpty(_request["Company"]) ? contact.Company : _request["Company"];
@@ -52,8 +52,8 @@ namespace WebApi.Controllers
             else
             {
                 response.StatusCode = HttpStatusCode.InternalServerError;
-                response.Content = new StringContent(string.Format("The employee with id {0} was not found in the database", Id.ToString()));
-            }
+                response.Content = new StringContent(string.Format("The employee with id {0} was not found in the database", id.ToString()));
+            }       
             return response;
         }
     }
