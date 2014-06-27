@@ -29,17 +29,17 @@
                     if (operation !== "read") {
                         return JSON.stringify(data);
                     }
-                },
-                schema: {
-                    model: {
-                        id: "Id",
-                        fields: {
-                            Id: { editable: false, type: 'number' },
-                            Region: { type: 'string' },
-                            Company: { type: 'string' },
-                            LName: { type: 'string' },
-                            FName: { type: 'string' }
-                        }
+                }
+            },
+            schema: {
+                model: {
+                    id: "Id",
+                    fields: {
+                        Id: { editable: false, type: 'number' },
+                        Region: { type: 'string' },
+                        Company: { type: 'string' },
+                        LName: { type: 'string' },
+                        FName: { type: 'string' }
                     }
                 }
             }
